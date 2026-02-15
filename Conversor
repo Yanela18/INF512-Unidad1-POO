@@ -1,0 +1,52 @@
+using System;
+using System.Windows.Forms;
+namespace ConversorMonedas
+{
+publicpartial class Form1:Form
+{
+private const decimal tasa USDaEUR=0.85m;
+private const decimal tasaEURaUSD=1.18m;
+public Form1()
+{
+InitializeComponenet();
+comoBoxDesde.Items.Add("USD");
+comboBoxDesde.Items.Add("EUR");
+comboBoxDesde.SelectedIndex=0;
+
+comboBoxHasta.Item.Add(USD");
+comboBoxHasta.Item.Add("EUR");
+comboBoxHasta.SelectedIndex=1;
+}
+private void
+buttonConvertir_Click(object sender,EventArgs e)
+{
+if(!decimal.TryParse(textBoxCantidad.Text, out decimal cantidad))
+{
+MessagrBox.Show("Ingrese un numero valido en la cantidad ". "Error". MessageBoxButtons.OK, MessageBoxlcon. Error);
+return;
+}
+string desde=comboBoxDesde.SelectedItem.ToString();
+string hasta=comboBoxHasta.SelectedItem.ToString();
+if(desde==hasta)
+{
+labelResultado.Text=$"Resultado:{cantidad} {hasta}";
+return;
+}
+decimal resultado;
+if(desde=="USD" && hasta=="EUR")
+{
+resultado= cantidad*tasaUSDaeur;
+}
+else if(desde=="EUR" &&== hasta=="USD")
+{
+resultado=cantidad*tasaEURaUSD;
+}
+else
+{
+MessageBox.Show("Conversion no soportada.", "Error", MessageBoxButtons.OK, MessageBoxlcon.Error);
+return;
+}
+labelResultado.Text=$"Resultado: {resultado:F2}{hasta}";
+}
+}
+}
